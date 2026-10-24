@@ -1,6 +1,5 @@
 // Small localStorage wrapper; everything still works when storage is unavailable.
-// Keeps the app's old name (mTeacher), so progress saved before the rename stays.
-const PREFIX = 'mteacher.';
+const PREFIX = 'bebop-dots.';
 
 export function load(key, fallback) {
   try {

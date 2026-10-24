@@ -148,15 +148,8 @@ function timingText(sum) {
 
 // ============================================================ app shell
 
-function loadSettings() {
-  const s = { ...DEFAULT_SETTINGS, ...load('settings', {}) };
-  // saved before it could be turned on from the exercise screen: 'off' | 'all' | 24 (on 2 & 4)
-  if (typeof s.metronome !== 'boolean') Object.assign(s, { metronome: s.metronome !== 'off', clickBeats: String(s.metronome) === '24' ? 'backbeat' : 'all' });
-  return s;
-}
-
 function App() {
-  const [settings, setSettings] = useState(loadSettings);
+  const [settings, setSettings] = useState(() => ({ ...DEFAULT_SETTINGS, ...load('settings', {}) }));
   const [progress, setProgress] = useState(() => load('progress', {})); // exercise id → { stars, best }
   const [route, setRoute] = useState(parseRoute);
   const [sound, setSound] = useState({ loaded: 0, ready: false, running: false, error: null });

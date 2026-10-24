@@ -97,8 +97,7 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches
       .keys()
-      // mteacher-: caches from before the app was renamed
-      .then((keys) => keys.filter((k) => (k.startsWith('bebop-dots-') || k.startsWith('mteacher-')) && k !== CACHE))
+      .then((keys) => keys.filter((k) => k.startsWith('bebop-dots-') && k !== CACHE))
       .then((old) => Promise.all(old.map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
