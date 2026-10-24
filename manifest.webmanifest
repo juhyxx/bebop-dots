@@ -15,5 +15,11 @@
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
     { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/exercise-wide.jpg", "sizes": "1280x800", "type": "image/jpeg", "form_factor": "wide", "label": "Playing a song step by step: played notes turn green, the next ones light up on the keyboard" },
+    { "src": "screenshots/home-wide.jpg", "sizes": "1280x800", "type": "image/jpeg", "form_factor": "wide", "label": "32 lessons, from 7th chords to songs, each ending with a band to play along with" },
+    { "src": "screenshots/exercise-narrow.jpg", "sizes": "780x1688", "type": "image/jpeg", "form_factor": "narrow", "label": "Playing a song step by step: played notes turn green, the next ones light up on the keyboard" },
+    { "src": "screenshots/home-narrow.jpg", "sizes": "780x1688", "type": "image/jpeg", "form_factor": "narrow", "label": "32 lessons, from 7th chords to songs, each ending with a band to play along with" }
   ]
 }

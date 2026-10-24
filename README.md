@@ -91,7 +91,8 @@ After adding files, add them to `FILES` in `sw.js` so they work offline.
 
 ## Code map
 
-- `index.html`, `styles.css`, `manifest.webmanifest`, `sw.js` (offline cache), `icons/`
+- `index.html`, `styles.css`, `manifest.webmanifest`, `sw.js` (offline cache), `icons/`, `screenshots/` (for the
+  install dialog; not cached offline)
 - `src/app.js`: screens (home, lesson, exercise, results), `#/` routes, input routing, settings
 - `src/course.js`: the exercise sequence built from the lessons
 - `src/lessons.js`: curriculum
