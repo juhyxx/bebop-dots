@@ -4,8 +4,8 @@
 
 A browser app (PWA) that teaches jazz piano on your MIDI keyboard. Each exercise starts with the piano alone,
 one chord or note at a time, then moves through other keys, and ends with you playing along with a swinging
-band (bass, drums, piano) that shows which notes you missed. It uses the same structure as **Dots**: lesson
-cards, numbered exercises with ★ stars, and passing an exercise unlocks the next.
+band (bass, drums, piano) that shows which notes you missed. Each lesson is a set of numbered exercises that
+earn ★ stars, and passing an exercise unlocks the next.
 
 ## Run it
 
