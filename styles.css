@@ -221,10 +221,6 @@ main {
   white-space: nowrap;
   cursor: pointer;
 }
-.chip.on {
-  color: var(--good);
-  border-color: var(--good);
-}
 .chip.warn {
   color: var(--accent-ink);
   border-color: var(--accent);
@@ -930,6 +926,13 @@ main {
   border-radius: 2px;
   border: 1.5px solid var(--line);
   background: var(--bg2);
+}
+.midi-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  text-align: right;
 }
 .slider {
   display: flex;

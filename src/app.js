@@ -239,14 +239,6 @@ function App() {
   else if (!sound.ready) soundChip = html`<span class="chip">Loading sounds ${Math.round(sound.loaded * 100)}%</span>`;
   else if (!sound.running) soundChip = html`<button class="chip warn" onClick=${() => engine.resume()}>🔇 Click to turn sound on</button>`;
 
-  const midiLabel = !midi.supported
-    ? 'No MIDI in this browser'
-    : !midiState.on
-      ? 'MIDI off'
-      : midiState.devices.length
-        ? `🎹 ${midiState.devices.map((d) => d.name).join(', ')}`
-        : 'MIDI: no keyboard';
-
   return html`
     <header class="topbar">
       <button class="brand" onClick=${() => go('')}>
@@ -254,13 +246,11 @@ function App() {
       </button>
       <div class="topbar-right">
         ${soundChip}
-        <button class="chip${midiState.on && midiState.devices.length ? ' on' : ''}" onClick=${connectMidi}
-          title=${midi.supported ? 'Connect your MIDI keyboard' : 'Web MIDI works in Chrome and Edge'}>${midiLabel}</button>
         <button class="icon-btn" aria-label="Settings" onClick=${() => setShowSettings(true)}>⚙</button>
       </div>
     </header>
     <main>${screen}</main>
-    ${showSettings && html`<${Settings} settings=${settings} set=${set} devices=${midiState.devices}
+    ${showSettings && html`<${Settings} settings=${settings} set=${set} midiState=${midiState} connectMidi=${connectMidi}
       onClose=${() => setShowSettings(false)} onReset=${() => setProgress({})} />`}
   `;
 }
@@ -749,7 +739,15 @@ function ResultCard({ results, actions }) {
 
 // ============================================================ settings
 
-function Settings({ settings, set, devices, onClose, onReset }) {
+function Settings({ settings, set, midiState, connectMidi, onClose, onReset }) {
+  const { on, devices } = midiState;
+  const midiStatus = !midi.supported
+    ? 'Web MIDI works in Chrome and Edge'
+    : !on
+      ? 'Not connected'
+      : devices.length
+        ? devices.map((d) => d.name).join(', ')
+        : 'No keyboard found';
   const check = (key, label, hint) => html`
     <label class="check"><input type="checkbox" checked=${settings[key]} onChange=${(e) => set({ [key]: e.target.checked })} />
       <span>${label}${hint && html`<small>${hint}</small>`}</span></label>`;
@@ -766,6 +764,9 @@ function Settings({ settings, set, devices, onClose, onReset }) {
     <div class="overlay" onClick=${(e) => e.target.classList.contains('overlay') && onClose()}>
       <div class="overlay-card settings">
         <h2><${Cut} text="Settings" /></h2>
+        <div class="field">MIDI keyboard
+          <span class="midi-status"><span class="muted small">${midiStatus}</span>
+            ${midi.supported && !on && html`<button class="btn small" onClick=${connectMidi}>Connect</button>`}</span></div>
         ${select('midiInput', 'MIDI input', [['all', 'All connected devices'], ...devices.map((d) => [d.id, d.name])])}
         ${check('playMine', "Play my notes with the app's piano", 'Turn off if your keyboard has its own sound.')}
         ${check('anyOctave', 'Right note in any octave counts', 'Turn off to require the exact keys shown.')}

@@ -17,7 +17,8 @@ Chrome can **install it as an app** (install button in the address bar) when it 
 After the first visit it works offline, sounds included.
 
 There's no start screen: the sounds load in the background, and your first click (e.g. **Start**) turns audio on.
-Connect your keyboard with the **MIDI** chip in the top bar; once allowed, it reconnects automatically.
+Pressing **Start** asks to use your MIDI keyboard (or connect it in **Settings** ⚙); once allowed, it reconnects
+automatically.
 No keyboard? Click the keys of the keyboard on the screen.
 
 ## How the course works
